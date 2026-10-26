@@ -6,24 +6,24 @@
 function makeCalculator() {
   return {
     result: 0,
-    add(a, b) {
-      return a + b;
+    add(b) {
+      this.result += b;
     },
 
-    subtract(a, b) {
-      return a - b;
+    subtract(b) {
+      this.result -= b;
     },
 
-    multiply(a, b) {
-      return a * b;
+    multiply(b) {
+      this.result *= b;
     },
 
-    divide(a, b) {
-      return a / b;
+    divide(b) {
+      this.result /= b;
     },
 
     operate(callback, num) {
-      this.result = callback(this.result, num);
+      callback.call(this, num);
 
       return this;
     },
